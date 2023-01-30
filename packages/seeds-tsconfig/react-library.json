@@ -1,11 +1,21 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "React Library",
+  "display": "React Component Library",
   "extends": "./base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["dom", "ES2015"],
+    "jsx": "react",
+    "lib": ["esnext", "dom", "dom.iterable"],
     "module": "ESNext",
-    "target": "es6"
+    "target": "ES5",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "declaration": false,
+    "declarationMap": false
   }
 }
