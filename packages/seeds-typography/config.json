@@ -33,7 +33,7 @@
         },
         {
           "destination": "seeds-typography.d.ts",
-          "format": "typescript/es6-declarations",
+          "format": "template/ts-exports-typography",
           "options": { "showFileHeader": false }
         }
       ]
