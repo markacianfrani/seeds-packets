@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.4.1
+
+### Patch Changes
+
+- d3f779d: git status
+
 ## 3.4.0
 
 ### Minor Changes
