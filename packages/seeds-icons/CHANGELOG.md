@@ -1,5 +1,15 @@
 # @sproutsocial/seeds-icons
 
+## 0.5.0
+
+### Minor Changes
+
+- 26659f4: Adds raw sprites to package exports
+  - Previously, sprites were only available when imported in Javascript using syntax like `import {GeneralSprite} from '@sproutsocial/seeds-icons';`
+  - Now, they are also available in their raw SVG form in the dist/sprites directory for use with scripts that cannot import from modules. (e.g., `const spriteSrc = 'node_modules/@sproutsocial/seeds-icons/dist/sprites/*.svg';`)
+- 26659f4: Adds flow types to generated files
+  - Exported as EnumIconNames from dist/types.flow.js
+
 ## 0.4.0
 
 ### Minor Changes
