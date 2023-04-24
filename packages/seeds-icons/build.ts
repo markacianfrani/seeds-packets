@@ -1,4 +1,4 @@
-import {writeFileSync, readFileSync} from "fs";
+import {writeFileSync, readFileSync, mkdirSync, existsSync, rmSync} from "fs";
 import {sync} from "globby";
 import {optimize} from "svgo";
 import {config} from "./svgo/svgo.config";
@@ -26,6 +26,13 @@ writeFileSync(`./src/sprout.ts`,
     `export const SproutViewBoxes = ${JSON.stringify(sproutAssets.viewBoxes)};
 export const SproutIconNames = ${JSON.stringify(sproutAssets.svgNames)};
 export const SproutSprite =  ${JSON.stringify(sproutAssets.sprite)};`);
+
+generateFlowTypes();
+
+mkdirSync('./dist/sprites');
+writeFileSync(`./dist/sprites/general.svg`, generalAssets.sprite)
+writeFileSync(`./dist/sprites/external.svg`, externalAssets.sprite)
+writeFileSync(`./dist/sprites/sprout.svg`, sproutAssets.sprite)
 
 function readAndOptimizeSvgs(paths: string[]): { svgNames: string[]; viewBoxes: { [svgName: string]: string }; sprite: string; } {
     // Read and optimize svgs
@@ -59,4 +66,33 @@ function readAndOptimizeSvgs(paths: string[]): { svgNames: string[]; viewBoxes: 
     const sprite = store.toString({inline: true});
 
     return {sprite, svgNames, viewBoxes};
+}
+
+function generateFlowTypes() {
+    // Make fresh dist folder before generating flow types directly into it
+    if (existsSync('./dist')) {
+        rmSync('./dist', {recursive: true});
+        mkdirSync('./dist');
+    } else {
+        mkdirSync('./dist');
+    }
+
+    const allIconNames = [
+        ...generalAssets.svgNames,
+        ...externalAssets.svgNames,
+        ...sproutAssets.svgNames,
+    ];
+    // Racine allows users to pass the icon name to Icon without the variant attached,
+    // so we need to add that version of each icon name to the type.
+    const iconNamesWithoutVariants = allIconNames
+        .filter((icon) => icon.endsWith('-outline'))
+        .map((name) => name.replace('-outline', ''));
+    const allIconNamesWithVariants = Array.from(
+        new Set([...allIconNames, ...iconNamesWithoutVariants])
+    ).sort();
+    writeFileSync(
+        `./dist/types.flow.js`,
+        `// @flow
+    export type EnumIconNames = "${allIconNamesWithVariants.join('" | "')}";`
+    );
 }
