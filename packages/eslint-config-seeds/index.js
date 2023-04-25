@@ -3,7 +3,7 @@ module.exports = {
   /**
    * In eslint the `extends` keyword  is used to apply all of the rules from a specific package configuration.
    *
-   * In contrast to the `plugins` keyword, which is does not apply any rules, but only provides them in the case we want to override rules or customize them.
+   * In contrast to the `plugins` keyword, which does not apply any rules, but only provides them in the case we want to override rules or customize them.
    */
   extends: [
     'eslint:recommended',

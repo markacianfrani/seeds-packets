@@ -2,13 +2,14 @@
   "name": "@sproutsocial/eslint-config-seeds",
   "version": "0.0.1",
   "description": "A custom eslint config for the Seeds design system",
-  "main": "index.js",
+  "author": "Sprout Social, Inc.",
+  "license": "MIT",
+  "keywords": ["eslintconfig", "eslint", "seeds", "sproutsocial"],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/sproutsocial/seeds-packets.git"
   },
-  "author": "Sprout Social, Inc.",
-  "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf dist && rm -rf node_modules"
   },
