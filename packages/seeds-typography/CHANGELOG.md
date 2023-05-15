@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.5.0
+
+### Minor Changes
+
+- 22a019e: adds roboto serif font util and family
+
 ## 3.4.1
 
 ### Patch Changes
