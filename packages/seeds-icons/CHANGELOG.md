@@ -1,5 +1,11 @@
 # @sproutsocial/seeds-icons
 
+## 0.6.0
+
+### Minor Changes
+
+- 714f0cf: Update build to include Typescript types
+
 ## 0.5.0
 
 ### Minor Changes
