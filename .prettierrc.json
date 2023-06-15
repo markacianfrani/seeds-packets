@@ -1,0 +1,25 @@
+{
+  "printWidth": 80,
+  "bracketSpacing": false,
+  "overrides": [
+    {
+      "files": "*.(md|mdx|ts|tsx)",
+      "options": {
+        "singleQuote": true
+      }
+		},
+		{
+			"files": ["*.ts", "*.tsx"],
+			"options": {
+				"parser": "typescript"
+			}
+    },
+    {
+      "files": "*.(js|jsx)",
+      "options": {
+        "singleQuote": true,
+        "parser": "babel-flow"
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
-export {GeneralViewBoxes, GeneralIconNames, GeneralSprite} from './general';
-export {ExternalViewBoxes, ExternalIconNames, ExternalSprite} from './external';
-export {SproutViewBoxes, SproutIconNames, SproutSprite} from './sprout';
+export * from './general';
+export * from './external';
+export * from './sprout';
+export * from './types';
