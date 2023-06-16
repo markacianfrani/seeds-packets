@@ -1,5 +1,11 @@
 # @sproutsocial/seeds-icons
 
+## 0.7.0
+
+### Minor Changes
+
+- 949aee5: Add `quotes-solid` and `quotes-outline` icons
+
 ## 0.6.0
 
 ### Minor Changes
