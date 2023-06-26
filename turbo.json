@@ -7,6 +7,9 @@
     },
     "clean": {
       "outputs": []
+    },
+    "sync-icons": {
+      "outputs": []
     }
   }
 }
