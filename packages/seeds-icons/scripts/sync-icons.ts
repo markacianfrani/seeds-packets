@@ -158,7 +158,7 @@ try {
           });
         }
       }
-      
+
       // Iterate through nodes and initialize recursive check for slices
       Object.keys(data.nodes).forEach((key) => {
         recursivelyCheckForSlices(data.nodes[key]?.document, key);
@@ -275,7 +275,7 @@ function queueTasks(tasks: (() => Promise<void | null>)[]) {
 const svgDirNames = {
   'Sprout Icons': 'sprout',
   'General Icons': 'general',
-  'Network and Branded Icons': 'external'
+  'External Icons': 'external'
 } as const;
 
 type SvgDirName = typeof svgDirNames[keyof typeof svgDirNames];
