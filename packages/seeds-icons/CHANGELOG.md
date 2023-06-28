@@ -1,5 +1,11 @@
 # @sproutsocial/seeds-icons
 
+## 0.8.0
+
+### Minor Changes
+
+- c760696: Fix flow type declarations and icon svgs
+
 ## 0.7.0
 
 ### Minor Changes
