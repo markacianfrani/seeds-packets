@@ -28,19 +28,33 @@ function generateSvgSpritesAndSrcFiles(svgFolderPaths: string[]) {
     // Get all svgs in folder
     const svgPaths = sync(`./svgs/${folderPath}/*.svg`);
     const svgAssets = readAndOptimizeSvgs(svgPaths);
+    const thisFolderTitleCase = toTitleCase(folderPath);
 
     // Add typescript file with viewBoxes, iconNames and sprite
     writeFileSync(
       `./src/${folderPath}.ts`,
-      `export const ${toTitleCase(folderPath)}ViewBoxes = ${JSON.stringify(
+      `export const ${thisFolderTitleCase}ViewBoxes = ${JSON.stringify(
         svgAssets.viewBoxes
       )} as const;
-        export const ${toTitleCase(folderPath)}IconNames = ${JSON.stringify(
+        export const ${thisFolderTitleCase}IconNames = ${JSON.stringify(
         svgAssets.svgNames
       )} as const;
-        export const ${toTitleCase(folderPath)}Sprite =  ${JSON.stringify(
+        export const ${thisFolderTitleCase}Sprite =  ${JSON.stringify(
         svgAssets.sprite
       )};`
+    );
+
+    // Add flow file with viewBoxes, iconNames and sprite
+    writeFileSync(
+      `./dist/${folderPath}.js.flow`,
+      `// @flow
+      export const ${thisFolderTitleCase}ViewBoxes = Object.freeze(${JSON.stringify(
+        svgAssets.viewBoxes
+      )});
+      export const ${thisFolderTitleCase}IconNames = Object.freeze(${JSON.stringify(
+        svgAssets.svgNames
+      )});
+      declare export var ${thisFolderTitleCase}Sprite: string;`
     );
 
     // Add svg sprite
@@ -63,9 +77,19 @@ function generateTypes(allIconNames: string[]) {
     new Set([...allIconNames, ...iconNamesWithoutVariants])
   ).sort();
 
-  // Add flow types to dist folder
   writeFileSync(
     `./dist/index.js.flow`,
+    `// @flow
+    ${svgFolderPaths
+      .map((path) => `export * from './${path}.js.flow';`)
+      .join('\n    ')}
+    export * from './types.js.flow';
+    `
+  );
+
+  // Add flow types to dist folder
+  writeFileSync(
+    `./dist/types.js.flow`,
     `// @flow
     export type EnumIconNames = "${allIconNamesWithVariants.join('" | "')}";
     export type EnumIconSvgNames = "${allIconNames.join('" | "')}";
