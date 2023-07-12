@@ -1,5 +1,11 @@
 # @sproutsocial/seeds-icons
 
+## 0.9.0
+
+### Minor Changes
+
+- 06f1cd6: Update all icons to use 24px frame
+
 ## 0.8.0
 
 ### Minor Changes
