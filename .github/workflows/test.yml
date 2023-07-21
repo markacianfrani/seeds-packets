@@ -14,4 +14,4 @@ jobs:
     - uses: RocketCommunicationsInc/design-token-action@v0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        files: packages/seeds-colors/tokens.json
+        files: packages/seeds-color/tokens.json
